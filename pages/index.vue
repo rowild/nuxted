@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 <template>
   <div>
     <h1>Events List</h1>
@@ -12,7 +13,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import EventCard from '@/components/EventCard'
+// import EventService from '@/services/EventService.js' // remove as soon as store is implemented
 
 export default {
   components: {
@@ -40,12 +43,25 @@ export default {
   //       })
   //     })
   // },
-  async asyncData ({ $axios, error }) {
+  // async asyncData ({ $axios, error }) { // remove $axios argment after implementing service
+  // async asyncData ({ $axios, error }) { // remove complete function as son as state is implemented
+  //   try {
+  //     // const response = await $axios.get('http://localhost:3001/events')
+  //     // const { data } = await $axios.get('http://localhost:3001/events')
+  //     // const { data } = await EventService.getEvents()
+  //     // return { events: response.data }
+  //     return { events: data }
+  //   } catch (e) {
+  //     error({
+  //       statusCode: 503,
+  //       message: 'Unable to fetch the data from the server at this time. Please try again later.'
+  //     })
+  //   }
+  // In Nuxt "fetch" does NOT automatically merge with the data object!
+  async fetch ({ store, error }) {
     try {
-      // const response = await $axios.get('http://localhost:3001/events')
-      const { data } = await $axios.get('http://localhost:3001/events')
-      // return { events: response.data }
-      return { events: data }
+      // Nuxt nmespaces Vuex modules!!! So use "events" for fetchEvents
+      await store.dispatch('events/fetchEvents')
     } catch (e) {
       error({
         statusCode: 503,
@@ -53,14 +69,13 @@ export default {
       })
     }
   },
+  computed: mapState({
+    // watch out! Nuxt has all our stores namespaced!
+    events: state => state.events.events
+  }),
   head () {
     return {
-      title: 'Neighbourhood Event List',
-      meta: [{
-        hid: 'description',
-        name: 'description',
-        content: 'A list of all your Neighbourhood Events.'
-      }]
+      title: 'Neighbourhood Event List'
     }
   }
 }
