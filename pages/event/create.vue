@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Events List</h1>
+    <h1>Create a new event</h1>
   </div>
 </template>
 
@@ -8,13 +8,17 @@
 export default {
   head () {
     return {
-      title: 'Neighbourhood Event List',
+      title: 'Create a new Neighbourhood Event',
       meta: [{
         hid: 'description',
         name: 'description',
-        content: 'A list of all your Neighbourhood Events.'
+        content: 'Create a new Neighbourhood Event.'
       }]
     }
   }
 }
 </script>
+
+<style scoped>
+
+</style>

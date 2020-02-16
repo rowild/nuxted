@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>Create a new event</h1>
+    <h1>The Event at /event</h1>
+    <p>No id given.</p>
   </div>
 </template>
 

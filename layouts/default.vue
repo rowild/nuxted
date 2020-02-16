@@ -7,9 +7,20 @@
 
 <script>
 import NavBar from '~/components/NavBar'
+
 export default {
   components: {
     NavBar
+  },
+  head () {
+    return {
+      titleTemplate: '%s - Your Neighbourhood Events',
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'All your Your Neighbourhood Events with dates, locations, descriptions and attendees.'
+      }]
+    }
   }
 }
 </script>

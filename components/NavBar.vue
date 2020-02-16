@@ -1,14 +1,17 @@
 <template>
   <div class="nav">
     <nuxt-link to="/" class="brand">
-      Real World events
+      Your Neighbourhood Events
     </nuxt-link>
     <nav>
       <nuxt-link to="/">
         List all Events
       </nuxt-link> |
-      <nuxt-link to="/create">
+      <nuxt-link to="/event/create">
         Create an event
+      </nuxt-link> |
+      <nuxt-link to="/username">
+        Users
       </nuxt-link>
     </nav>
   </div>
