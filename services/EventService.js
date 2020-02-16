@@ -2,7 +2,8 @@ import axios from 'axios'
 
 // Create single axios instance
 const apiClient = axios.create({
-  baseURL: 'http://localhost:3001',
+  // baseURL: 'http://localhost:3001',
+  baseURL: 'https://my-json-server.typicode.com/rowild/nuxted/',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
